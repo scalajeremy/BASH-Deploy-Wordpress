@@ -2,7 +2,9 @@
 
 ## Requirement
 
-You'll need to have at least a working [LAMP](https://doc.ubuntu-fr.org/lamp) environnement
+* You'll need "curl" `apt-get install curl`
+* You'll need to have at least a working [LAMP](https://doc.ubuntu-fr.org/lamp) environnement
+* **IMPORTANT** you'll need to be in the group **www-data**, because that's the group who'll get the permission to edit files or to add them to your wordpress install. To do that, run this command `usermod -a -G www-data yourUsername`
 
 ## What it does?
 
