@@ -24,3 +24,7 @@ This bash script let you:
 4. Go to the folder you want to install Wordpress (ex: var/www/html).
 5. Execute `wordpress.sh`.
 6. Answer to the question ask in the terminal.
+
+### Credits
+
+People that helped me: [Sam](https://github.com/sdegueldre), [Vincent](https://github.com/Raigyo)
