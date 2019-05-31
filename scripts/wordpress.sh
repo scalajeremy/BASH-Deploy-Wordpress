@@ -29,7 +29,7 @@ function checkUser () {
 }
 
 function createDB () {
-  mysql -u $userMySQL -p -e "CREATE DATABASE ${projectname};"
+  mysql -u $userMySQL -p -e "CREATE DATABASE ${dbName};"
 }
 
 function install () {
@@ -57,6 +57,8 @@ function install () {
   echo "######                Creating database               ######"
   echo "############################################################"
   # Creating a DB with the same name as the project name
+  echo "!!!Please enter your desire name for MySQL database (no spec. char. & space):"
+  read dbName
   echo "!!!Please enter your username for MySQL:"
   read userMySQL
   echo "!!!Please enter your password for MySQL:"
