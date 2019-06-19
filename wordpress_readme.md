@@ -25,6 +25,3 @@ This bash script let you:
 5. Execute `wordpress.sh`.
 6. Answer to the question ask in the terminal.
 
-### Credits
-
-People that helped me: [Sam](https://github.com/sdegueldre), [Vincent](https://github.com/Raigyo)
