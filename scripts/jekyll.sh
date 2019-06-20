@@ -21,7 +21,6 @@ function connectionIsUp () {
 }
 
 function whatOs () {
-  clear
   echo "Can you tell me which OS you're working on?"
   echo "Linux or MacOSX?"
 select os in "Linux" "MacOSX"; do
@@ -33,7 +32,6 @@ done
 }
 
 function whatShell () {
-  clear
   echo "In order to link to your gems properly, I need to know which shell you're using"
   echo "Are you using BASH or ZSH?"
 select shell in "Bash" "ZSH"; do
@@ -44,30 +42,46 @@ select shell in "Bash" "ZSH"; do
 done
 }
 
-function installRuby () {
-    sudo apt-get install ruby-full build-essential zlib1g-dev
+function isOsShellOk () {
+  echo "Ok so, you're working on" ${bold}${red}$os ${normal}"and you're using" ${bold}${red}$shell
+  read -p ${normal}"Is that correct? (Y/n)" -n 1 -r
+  REPLY=${REPLY:-Y}
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+      clear
+      installRuby
+    else
+        echo "nope"
+  fi
 }
 
+function installRuby () {
+    # sudo apt-get install ruby-full build-essential zlib1g-dev
+    if [[ $os == MacOSX ]]; then
+      installRubyMacOSX
+    else
+      installRubyLinux
+    fi
+}
+
+function installRubyMacOSX () {
+    echo "Ok i'm installing Ruby for your Mac"
+
+}
+
+function installRubyLinux () {
+    echo "Ok i'm installing Ruby for your Linux"
+
+}
 ###################
 # Starting script #
 ###################
-
+clear
 connectionIsUp
 if [[ $? != 0 ]]; then
     exit 1
-fi
+  fi
 whatOs
+clear
 whatShell
 clear
-echo "Ok so, you're working on" ${bold}${red}$os ${normal}"and you're using" ${bold}${red}$shell
-read -p ${normal}"Is that correct? (y/n)" -n 1 -r
-echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "${green}ok i'm gonna install jekyll now"
-  else
-    clear
-    jekyll.sh
-fi
-
-
-# installRuby
+isOsShellOk
