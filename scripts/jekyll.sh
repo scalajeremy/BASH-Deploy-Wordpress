@@ -34,10 +34,10 @@ done
 function whatShell () {
   echo "In order to link to your gems properly, I need to know which shell you're using"
   echo "Are you using BASH or ZSH?"
-select shell in "Bash" "ZSH"; do
+select shell in "bash" "zsh"; do
     case $shell in
-        Bash ) break;;
-        ZSH )  break;;
+        bash ) break;;
+        zsh )  break;;
     esac
 done
 }
@@ -50,7 +50,8 @@ function isOsShellOk () {
       clear
       installRuby
     else
-        echo "nope"
+      clear
+      return 1
   fi
 }
 
@@ -70,7 +71,11 @@ function installRubyMacOSX () {
 
 function installRubyLinux () {
     echo "Ok i'm installing Ruby for your Linux"
-
+    sudo apt-get install ruby-full build-essential zlib1g-dev
+    echo '# Install Ruby Gems to ~/gems' >> ~/."$shell"rc
+    echo 'export GEM_HOME="$HOME/gems"' >> ~/."$shell"rc
+    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/."$shell"rc
+    source ~/."$shell"rc
 }
 ###################
 # Starting script #
@@ -78,10 +83,15 @@ function installRubyLinux () {
 clear
 connectionIsUp
 if [[ $? != 0 ]]; then
-    exit 1
-  fi
-whatOs
-clear
-whatShell
-clear
-isOsShellOk
+  exit 1
+fi
+ok=1
+while [ $ok == 1 ]
+do
+  whatOs
+  clear
+  whatShell
+  clear
+  isOsShellOk
+  ok=$?
+done
