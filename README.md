@@ -17,7 +17,7 @@ Check your os and shell, then install a Ruby development environment and Jekyll.
 3. If you're using **ZSH** execute `nano ~/.zshrc`  or `nano ~/.bashrc` if you're using **BASH**.
 4. Add `export PATH=$PATH:$HOME/<folderWithScripts>` at the end of the file.
 5. Save your file and restart your computer.
-6. Execute `sudo chmod u+x nameOfScript.sh`
+6. Download a script, save it on the folder then execute `sudo chmod u+x nameOfScript.sh`
 7. Now you can call these script like this in terminal: `nameOfScript.sh`
 
 ### Credits
