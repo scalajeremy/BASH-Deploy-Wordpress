@@ -1,5 +1,7 @@
 # Wordpress Installer
 
+Install Wordpress locally
+
 ## Requirement
 
 * You'll need "curl" `apt-get install curl`
