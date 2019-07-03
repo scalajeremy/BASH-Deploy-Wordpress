@@ -1,6 +1,6 @@
 # Wordpress Installer
 
-Install Wordpress locally
+Install Wordpress locally and do some magic!
 
 ## Requirement
 
